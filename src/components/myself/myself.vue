@@ -1,208 +1,183 @@
 <template>
-  <div class="myself-box">
-    <div class="myself-header">
-      <p>我的</p>
-    </div>
-    <div class="myself-message">
-      <div class="myself-message-box">
-        <div class="myself-name">
-          <p>程序员</p>
-          <div class="myself-avatar">
-            <p>码农</p>
+  <div>
+    <div class="myself-box" v-show="myself">
+      <div class="myself-header">
+        <p>成都荣耀世纪</p>
+      </div>
+      <div class="myself-message">
+        <div class="myself-message-box">
+          <div class="myself-name">
+            <p>{{info.data.user.username}}</p>
+            <div class="myself-avatar">
+              <p>{{info.data.user.age}}</p>
+            </div>
           </div>
-        </div>
-        <div class="myself-position">
-          <div class="position-name">
-            <p>开发部</p>
-            <i class="icon-arrow_right"></i>
-            <p>程序员</p>
+          <div class="myself-position">
+            <transition name="showDept">
+              <div class="position-name" v-show="phoneFlag">
+                <p>{{info.data.dept.deptName}}</p>
+                <i class="icon-arrow_right"></i>
+                <p>{{info.data.user.position}}</p>
+              </div>
+            </transition>
+            <transition name="showIcon">
+              <i v-show="phoneFlag" class="icon-phone phone-right" @click="showPhone"></i>
+            </transition>
+            <i v-show="!phoneFlag" class="icon-app phone-right" @click="showPhone"></i>
+            <div class="phone-number" v-show="!phoneFlag">{{info.data.user.phone}}</div>
           </div>
-          <i class="icon-phone phone-right"></i>
-        </div>
-        <div class="myself-work-status">
-          <span class="work-status"></span>
-          <p class="status-message">在职</p>
+          <div v-show="info.data.user.status===1" class="myself-work-status">
+            <span class="work-status-on"></span>
+            <p class="status-message">在职</p>
+          </div>
+          <div v-show="info.data.user.status===0" class="myself-work-status">
+            <span class="work-status-off"></span>
+            <p class="status-message">离职</p>
+          </div>
         </div>
       </div>
+      <div class="my-wrapper" ref="wrapper">
+        <ul class="myself-content">
+          <li class="myself-items" @click="showPer">
+            <div class="functionList">
+              <div class="functionImg">
+                <div class="functionImgBox">
+                  <i class="icon-favorite"></i>
+                </div>
+              </div>
+              <div class="functionContent">
+                <p>个人信息</p>
+                <i class="icon-arrow_right"></i>
+              </div>
+              <div class="functionClear"></div>
+            </div>
+          </li>
+          <li class="myself-items">
+            <div class="functionList">
+              <div class="functionImg">
+                <div class="functionImgBox">
+                  <i class="icon-favorite"></i>
+                </div>
+              </div>
+              <div class="functionContent">
+                <p>部门信息</p>
+                <i class="icon-arrow_right"></i>
+              </div>
+              <div class="functionClear"></div>
+            </div>
+          </li>
+          <li class="myself-items">
+            <div class="functionList">
+              <div class="functionImg">
+                <div class="functionImgBox">
+                  <i class="icon-favorite"></i>
+                </div>
+              </div>
+              <div class="functionContent">
+                <p>我的钱包</p>
+                <i class="icon-arrow_right"></i>
+              </div>
+              <div class="functionClear"></div>
+            </div>
+          </li>
+          <li class="myself-items">
+            <div class="functionList">
+              <div class="functionImg">
+                <div class="functionImgBox">
+                  <i class="icon-favorite"></i>
+                </div>
+              </div>
+              <div class="functionContent">
+                <p>实名认证</p>
+                <i class="icon-arrow_right"></i>
+              </div>
+              <div class="functionClear"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <navIndex></navIndex>
     </div>
-    <div class="my-wrapper" ref="wrapper">
-      <ul class="myself-content">
-        <li class="myself-items">
-          <div class="functionList">
-            <div class="functionImg">
-              <div class="functionImgBox">
-                <i class="icon-favorite"></i>
-              </div>
-            </div>
-            <div class="functionContent">
-              <p>我的钱包</p>
-              <i class="icon-arrow_right"></i>
-            </div>
-            <div class="functionClear"></div>
-          </div>
-        </li>
-        <li class="myself-items">
-          <div class="functionList">
-            <div class="functionImg">
-              <div class="functionImgBox">
-                <i class="icon-favorite"></i>
-              </div>
-            </div>
-            <div class="functionContent">
-              <p>我的钱包</p>
-              <i class="icon-arrow_right"></i>
-            </div>
-            <div class="functionClear"></div>
-          </div>
-        </li>
-        <li class="myself-items">
-          <div class="functionList">
-            <div class="functionImg">
-              <div class="functionImgBox">
-                <i class="icon-favorite"></i>
-              </div>
-            </div>
-            <div class="functionContent">
-              <p>我的钱包</p>
-              <i class="icon-arrow_right"></i>
-            </div>
-            <div class="functionClear"></div>
-          </div>
-        </li>
-        <li class="myself-items">
-          <div class="functionList">
-            <div class="functionImg">
-              <div class="functionImgBox">
-                <i class="icon-favorite"></i>
-              </div>
-            </div>
-            <div class="functionContent">
-              <p>我的钱包</p>
-              <i class="icon-arrow_right"></i>
-            </div>
-            <div class="functionClear"></div>
-          </div>
-        </li>
-        <li class="myself-items">
-          <div class="functionList">
-            <div class="functionImg">
-              <div class="functionImgBox">
-                <i class="icon-favorite"></i>
-              </div>
-            </div>
-            <div class="functionContent">
-              <p>我的钱包</p>
-              <i class="icon-arrow_right"></i>
-            </div>
-            <div class="functionClear"></div>
-          </div>
-        </li>
-        <li class="myself-items">
-          <div class="functionList">
-            <div class="functionImg">
-              <div class="functionImgBox">
-                <i class="icon-favorite"></i>
-              </div>
-            </div>
-            <div class="functionContent">
-              <p>我的钱包</p>
-              <i class="icon-arrow_right"></i>
-            </div>
-            <div class="functionClear"></div>
-          </div>
-        </li>
-        <li class="myself-items">
-          <div class="functionList">
-            <div class="functionImg">
-              <div class="functionImgBox">
-                <i class="icon-favorite"></i>
-              </div>
-            </div>
-            <div class="functionContent">
-              <p>我的钱包</p>
-              <i class="icon-arrow_right"></i>
-            </div>
-            <div class="functionClear"></div>
-          </div>
-        </li>
-        <li class="myself-items">
-          <div class="functionList">
-            <div class="functionImg">
-              <div class="functionImgBox">
-                <i class="icon-favorite"></i>
-              </div>
-            </div>
-            <div class="functionContent">
-              <p>我的钱包</p>
-              <i class="icon-arrow_right"></i>
-            </div>
-            <div class="functionClear"></div>
-          </div>
-        </li>
-        <li class="myself-items">
-          <div class="functionList">
-            <div class="functionImg">
-              <div class="functionImgBox">
-                <i class="icon-favorite"></i>
-              </div>
-            </div>
-            <div class="functionContent">
-              <p>我的钱包</p>
-              <i class="icon-arrow_right"></i>
-            </div>
-            <div class="functionClear"></div>
-          </div>
-        </li><li class="myself-items">
-          <div class="functionList">
-            <div class="functionImg">
-              <div class="functionImgBox">
-                <i class="icon-favorite"></i>
-              </div>
-            </div>
-            <div class="functionContent">
-              <p>我的钱包</p>
-              <i class="icon-arrow_right"></i>
-            </div>
-            <div class="functionClear"></div>
-          </div>
-        </li>
-        <li class="myself-items">
-        <div class="functionList">
-          <div class="functionImg">
-            <div class="functionImgBox">
-              <i class="icon-favorite"></i>
-            </div>
-          </div>
-          <div class="functionContent">
-            <p>我的钱包</p>
-            <i class="icon-arrow_right"></i>
-          </div>
-          <div class="functionClear"></div>
-        </div>
-      </li>
-      </ul>
-    </div>
-    <navIndex></navIndex>
+    <personal_information v-show="per"></personal_information>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
-  import navIndex from '@/components/nav/nav-index.vue'
+  import navIndex from '../nav/nav-index.vue'
+  import personal_information from '../personal_information/personal_information'
+
   export default {
     mounted() {
       this.$nextTick(() => {
-        this.scroll = new BScroll(this.$refs.wrapper, {})
+        this.scroll = new BScroll(this.$refs.wrapper, {
+          click: true
+        })
       })
     },
     components: {
-      navIndex
+      navIndex,
+      personal_information
+    },
+    data() {
+      return {
+        info: {
+          code: 0,
+          msg: '成功',
+          data: {
+            user: {
+              id: 1,
+              username: 'sanye',
+              phone: '18145032533',
+              age: 21,
+              birthday: '07-24',
+              avatar: 'http://........png',
+              bankInfo: [
+                {
+                  bank: '中国银行',
+                  accountName: 'sanye',
+                  bankNum: '622100*********2222'
+                }
+              ],
+              IDCard: {
+                name: 'sanye',
+                IDCardNum: '511000000000000',
+                address: '四川**********号',
+                brithDate: '1490171219'
+              },
+              position: '程序员',
+              status: 0
+            },
+            dept: {
+              id: 1,
+              deptNo: '123',
+              deptName: '开发部'
+            }
+          }
+        },
+        phoneFlag: true,
+        per: false,
+        myself: true
+      }
+    },
+    methods: {
+      showPhone() {
+        this.phoneFlag = !this.phoneFlag
+      },
+      showPer(event) {
+        if (!event._constructed) {
+          return
+        }
+        this.per = true
+        this.myself = false
+      }
     }
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/styl/mixin.styl"
+
   .myself-box
     width 100%
     .myself-header
@@ -246,22 +221,45 @@
             display inline-block
             line-height 40px
             text-align center
+            opacity 1
+            &.showDept-enter-active, &.showDept-leave-active
+              transition all 0.2s
+            &.showDept-enter, &.showDept-leave-to
+              margin-left -200px
+              opacity 0
             & > p
               display inline-block
           .phone-right
             float right
             line-height 40px
             text-align center
+            opacity 1
+            &.showIcon-enter-active, &.showIcon-leave-active
+              transition all 0.02s
+            &.showIcon-enter, &.showIcon-leave-to
+              opacity 0
+          .phone-number
+            display inline-block
+            position absolute
+            margin-top 12px
+            letter-spacing 1px
+            opacity 1
         .myself-work-status
           height 45px
           line-height 45px
           margin 0 20px
-          .work-status
+          .work-status-on
             height 16px
             width 16px
             display inline-block
             border-radius 8px
             background-color #009fed
+          .work-status-off
+            height 16px
+            width 16px
+            display inline-block
+            border-radius 8px
+            background #FF3232
           .status-message
             display inline-block
             margin-left 5px
