@@ -2,45 +2,11 @@
   <div class="showPer">
     <transition name="showPer">
       <div class="per-wrapper" v-show="showFlag">
-        <form method="post" action="#" enctype="multipart/form-data">
-          <title_line title_font="个人信息"></title_line>
-          <div class="per border-1px-bottom">
-            <div class="title">头像</div>
-            <div class="name" v-show="user.avatar">
-              <img for="avatar" class="avatar" :src="user.avatar">
-              <input type="file" name="avatar">
-            </div>
-            <div class="name" v-show="!user.avatar">
-              <span v-show="FlagAvatar">未设置</span>
-              <img v-show="!FlagAvatar" for="avatar" class="avatar" :src="showAvatar">
-              <input ref="avatar" type="file" name="avatar" @change="getAvatar">
-            </div>
-            <i class="icon-arrow_right"></i>
-          </div>
-          <div class="per border-1px-bottom" @click="showUsername">
-            <div class="title">姓名</div>
-            <div class="name">{{user.username}}</div>
-            <i class="icon-arrow_right"></i>
-          </div>
-          <div class="per border-1px-bottom">
-            <div class="title">年龄</div>
-            <div class="name">{{user.age}}</div>
-          </div>
-          <div class="per border-1px-bottom" @click="showPhone">
-            <div class="title">手机</div>
-            <div class="name">{{user.phone}}</div>
-            <i class="icon-arrow_right"></i>
-          </div>
-          <div class="per border-1px-bottom" @click="showBirthday">
-            <div class="title">生日</div>
-            <div class="name">{{user.birthday}}</div>
-            <i class="icon-arrow_right"></i>
-          </div>
-          <div class="per border-1px-bottom">
-            <div class="title">职称</div>
-            <div class="name">{{user.position}}</div>
-          </div>
-        </form>
+        <title_line title_font="部门信息"></title_line>
+        <div class="per border-1px-bottom" @click="showUsername">
+          <div class="title">所属部门</div>
+          <div class="name">{{dept.deptName}}</div>
+        </div>
       </div>
     </transition>
     <updatePersonal ref="updatePersonal" :userData="userData" @accomplish="accomplish"
@@ -57,7 +23,7 @@
 
   export default {
     props: {
-      user: {
+      dept: {
         type: Object
       }
     },
@@ -71,8 +37,6 @@
       },
       hide() {
         this.showFlag = false
-        this.$refs.updatePersonal.hidden()
-        this.$refs.scrollDate.hidden()
       },
       showUsername() {
         /*if (!event._constructed) {
@@ -103,11 +67,6 @@
       },
       accomplish(event) {
         this.$emit('accomplish', event.target)
-      },
-      getAvatar() {
-        this.showAvatar = this.$refs.avatar.value
-        this.FlagAvatar = false
-        this.$emit('accomplish', event.target)
       }
     },
     data() {
@@ -124,9 +83,7 @@
         },
         updateName: {
           data: String
-        },
-        showAvatar: String,
-        FlagAvatar: true
+        }
       }
     },
     components: {
@@ -161,7 +118,7 @@
         border-1px-bottom rgb(170, 170, 170)
         .title
           display inline-block
-          flex 0 0 40px
+          flex 0 0 80px
           height 40px
           line-height 40px
         .name
@@ -175,15 +132,6 @@
             border-radius 50%
             width 40px
             height 40px
-            z-index 1
-          & > input
-            font-size 0
-            position absolute
-            width 100%
-            height 100%
-            top 0
-            left 0
-            z-index 10
         .icon-arrow_right
           position absolute
           line-height 40px
