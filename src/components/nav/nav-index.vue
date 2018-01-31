@@ -41,7 +41,7 @@
     display flex
     width 100%
     background-color #fff
-    height 48px
+    height 50px
     .nav-items
       flex 1
       text-align center

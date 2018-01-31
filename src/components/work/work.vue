@@ -13,32 +13,20 @@
         <li>
           <div class="work">
             <div class="work-title">
-              <p>应用</p>
+              <p>人员管理</p>
             </div>
             <div class="work-content">
               <a class="work-items" @click="goTo('/approval')">
-                <div class="color_1"><p>审</p></div>
-                <span>审核</span>
+                <div class="color_1"><p>加</p></div>
+                <span>人员添加</span>
               </a>
               <a class="work-items" @click="goTo('/notice/list')">
-                <div class="color_2"><p>通</p></div>
-                <span>通知</span>
+                <div class="color_2"><p>编</p></div>
+                <span>人员编辑</span>
               </a>
               <a class="work-items" @click="goTo('/approval')">
-                <div class="color_3"><p>审</p></div>
-                <span>审核</span>
-              </a>
-              <a class="work-items" @click="goTo('/notice/list')">
-                <div class="color_4"><p>通</p></div>
-                <span>通知</span>
-              </a>
-              <a class="work-items" @click="goTo('/approval')">
-                <div class="color_1"><p>审</p></div>
-                <span>审核</span>
-              </a>
-              <a class="work-items" @click="goTo('/notice/list')">
-                <div class="color_2"><p>通</p></div>
-                <span>通知</span>
+                <div class="color_3"><p>查</p></div>
+                <span>人员查询</span>
               </a>
             </div>
           </div>
@@ -46,32 +34,20 @@
         <li>
           <div class="work">
             <div class="work-title">
-              <p>应用</p>
+              <p>部门管理</p>
             </div>
             <div class="work-content">
               <a class="work-items" @click="goTo('/approval')">
-                <div class="color_1"><p>审</p></div>
-                <span>审核</span>
+                <div class="color_1"><p>加</p></div>
+                <span>添加部门</span>
               </a>
               <a class="work-items" @click="goTo('/notice/list')">
-                <div class="color_2"><p>通</p></div>
-                <span>通知</span>
+                <div class="color_2"><p>查</p></div>
+                <span>查询部门</span>
               </a>
               <a class="work-items" @click="goTo('/approval')">
                 <div class="color_3"><p>审</p></div>
                 <span>审核</span>
-              </a>
-              <a class="work-items" @click="goTo('/notice/list')">
-                <div class="color_4"><p>通</p></div>
-                <span>通知</span>
-              </a>
-              <a class="work-items" @click="goTo('/approval')">
-                <div class="color_1"><p>审</p></div>
-                <span>审核</span>
-              </a>
-              <a class="work-items" @click="goTo('/notice/list')">
-                <div class="color_2"><p>通</p></div>
-                <span>通知</span>
               </a>
             </div>
           </div>
@@ -79,32 +55,16 @@
         <li>
           <div class="work">
             <div class="work-title">
-              <p>应用</p>
+              <p>报销</p>
             </div>
             <div class="work-content">
               <a class="work-items" @click="goTo('/approval')">
-                <div class="color_1"><p>审</p></div>
-                <span>审核</span>
+                <div class="color_1"><p>发</p></div>
+                <span>发起报销</span>
               </a>
               <a class="work-items" @click="goTo('/notice/list')">
-                <div class="color_2"><p>通</p></div>
-                <span>通知</span>
-              </a>
-              <a class="work-items" @click="goTo('/approval')">
-                <div class="color_3"><p>审</p></div>
-                <span>审核</span>
-              </a>
-              <a class="work-items" @click="goTo('/notice/list')">
-                <div class="color_4"><p>通</p></div>
-                <span>通知</span>
-              </a>
-              <a class="work-items" @click="goTo('/approval')">
-                <div class="color_1"><p>审</p></div>
-                <span>审核</span>
-              </a>
-              <a class="work-items" @click="goTo('/notice/list')">
-                <div class="color_2"><p>通</p></div>
-                <span>通知</span>
+                <div class="color_2"><p>预</p></div>
+                <span>工资预支</span>
               </a>
             </div>
           </div>
@@ -112,32 +72,63 @@
         <li>
           <div class="work">
             <div class="work-title">
-              <p>应用</p>
+              <p>考勤</p>
             </div>
             <div class="work-content">
               <a class="work-items" @click="goTo('/approval')">
-                <div class="color_1"><p>审</p></div>
-                <span>审核</span>
+                <div class="color_1"><p>卡</p></div>
+                <span>主播直播打卡</span>
               </a>
               <a class="work-items" @click="goTo('/notice/list')">
-                <div class="color_2"><p>通</p></div>
-                <span>通知</span>
+                <div class="color_2"><p>假</p></div>
+                <span>请假</span>
               </a>
               <a class="work-items" @click="goTo('/approval')">
-                <div class="color_3"><p>审</p></div>
-                <span>审核</span>
+                <div class="color_3"><p>卡</p></div>
+                <span>工作人员打卡</span>
               </a>
-              <a class="work-items" @click="goTo('/notice/list')">
-                <div class="color_4"><p>通</p></div>
-                <span>通知</span>
-              </a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="work">
+            <div class="work-title">
+              <p>人事</p>
+            </div>
+            <div class="work-content">
               <a class="work-items" @click="goTo('/approval')">
-                <div class="color_1"><p>审</p></div>
-                <span>审核</span>
+                <div class="color_1"><p>离</p></div>
+                <span>离职申请</span>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="work">
+            <div class="work-title">
+              <p>业务</p>
+            </div>
+            <div class="work-content">
+              <a class="work-items" @click="goTo('/approval')">
+                <div class="color_1"><p>报</p></div>
+                <span>日报周报月报</span>
               </a>
               <a class="work-items" @click="goTo('/notice/list')">
-                <div class="color_2"><p>通</p></div>
-                <span>通知</span>
+                <div class="color_2"><p>绩</p></div>
+                <span>绩效自评</span>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="work">
+            <div class="work-title">
+              <p>物品借记</p>
+            </div>
+            <div class="work-content">
+              <a class="work-items" @click="goTo('/approval')">
+                <div class="color_1"><p>借</p></div>
+                <span>借记</span>
               </a>
             </div>
           </div>
