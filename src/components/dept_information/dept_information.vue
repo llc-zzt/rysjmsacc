@@ -3,15 +3,12 @@
     <transition name="showPer">
       <div class="per-wrapper" v-show="showFlag">
         <title_line title_font="部门信息"></title_line>
-        <div class="per border-1px-bottom" @click="showUsername">
+        <div class="per border-1px-bottom">
           <div class="title">所属部门</div>
           <div class="name">{{dept.deptName}}</div>
         </div>
       </div>
     </transition>
-    <updatePersonal ref="updatePersonal" :userData="userData" @accomplish="accomplish"
-                    :updateName="updateName"></updatePersonal>
-    <scroll_date ref="scrollDate" :month="month" :day="day" @accomplish="accomplish"></scroll_date>
   </div>
 </template>
 
@@ -27,9 +24,6 @@
         type: Object
       }
     },
-    mounted() {
-
-    },
     methods: {
       show() {
         this.showFlag = true
@@ -37,36 +31,6 @@
       },
       hide() {
         this.showFlag = false
-      },
-      showUsername() {
-        /*if (!event._constructed) {
-         return
-         }*/
-        this.updateName.data = 'username'
-        this.userData.data = this.user.username
-        this.$refs.updatePersonal.show()
-        this.$refs.scrollDate.hidden()
-      },
-      showPhone() {
-        /*if (!event._constructed) {
-         return
-         }*/
-        this.updateName.data = 'phone'
-        this.userData.data = this.user.phone
-        this.$refs.updatePersonal.show()
-        this.$refs.scrollDate.hidden()
-      },
-      showBirthday() {
-        /*if (!event._constructed) {
-         return
-         }*/
-        this.month.data = this.user.birthday.split('-')[0]
-        this.day.data = this.user.birthday.split('-')[1]
-        this.$refs.scrollDate.show()
-        this.$refs.updatePersonal.hidden()
-      },
-      accomplish(event) {
-        this.$emit('accomplish', event.target)
       }
     },
     data() {
@@ -87,9 +51,7 @@
       }
     },
     components: {
-      title_line,
-      updatePersonal,
-      scroll_date
+      title_line
     }
   }
 </script>

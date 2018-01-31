@@ -46,8 +46,8 @@
                 <span>查询部门</span>
               </a>
               <a class="work-items" @click="goTo('/approval')">
-                <div class="color_3"><p>审</p></div>
-                <span>审核</span>
+                <div class="color_3"><p>编</p></div>
+                <span>编辑部门</span>
               </a>
             </div>
           </div>
